@@ -23,7 +23,7 @@ export const HomePage: React.FC = () => {
   const theme = useTheme();
   return (
     <div style={{ height: "100vh" }}>
-      {/* <a
+      <a
         href="https://api.whatsapp.com/send?phone=5519999999999&text=Texto%20aqui"
         target="_blank"
         style={{ position: "fixed", bottom: "20px", right: "30px" }}
@@ -45,7 +45,7 @@ export const HomePage: React.FC = () => {
             fill="#FAFAFA"
           />
         </svg>
-      </a> */}
+      </a>
       <Header />
       <section
         style={{
