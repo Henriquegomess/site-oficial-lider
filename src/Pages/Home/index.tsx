@@ -139,7 +139,13 @@ export const HomePage: React.FC = () => {
           </Typography>
         </Box>
 
-        <img src="/home.png" alt="imagem" width="50%" height="50%" />
+        <img
+          src="/home.png"
+          alt="imagem"
+          width="50%"
+          height="50%"
+          loading="lazy"
+        />
 
         <Typography
           style={{
@@ -182,15 +188,17 @@ export const HomePage: React.FC = () => {
             src="/1.png"
             alt="imagem"
             width="100%"
+            loading="lazy"
             style={{ paddingBottom: "2rem" }}
           />
           <img
             src="/2.png"
             alt="imagem"
             width="100%"
+            loading="lazy"
             style={{ paddingBottom: "2rem" }}
           />
-          <img src="/3.png" alt="imagem" width="100%" />
+          <img src="/3.png" alt="imagem" width="100%" loading="lazy" />
         </Box>
         <Box>
           <Typography style={{ color: "#40AC49", fontSize: "3.6rem" }}>
@@ -238,12 +246,14 @@ export const HomePage: React.FC = () => {
             src="/4.png"
             alt="imagem"
             width="100%"
+            loading="lazy"
             style={{ paddingBottom: "2rem" }}
           />
           <img
             src="/5.png"
             alt="imagem"
             width="100%"
+            loading="lazy"
             style={{ paddingBottom: "2rem" }}
           />
           <img src="/6.png" alt="imagem" width="100%" />
