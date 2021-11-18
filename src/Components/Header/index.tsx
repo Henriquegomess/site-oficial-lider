@@ -19,7 +19,13 @@ export const Header: React.FC = () => {
               aria-label="menu"
               sx={{ mr: 2, color: "#FFFFFF" }}
             >
-              <MenuIcon />
+              <img
+                src="/logo-lider.png
+              "
+                alt="logo"
+                width="30%"
+                height="30%"
+              />
             </IconButton>
             <Typography
               variant="h6"
@@ -46,7 +52,9 @@ export const Header: React.FC = () => {
             <Button sx={{ color: "#000000", textTransform: "none" }}>
               Trabalhe conosco
             </Button>
-            <Button sx={{ color: "#000000", textTransform: "none" }}>
+            <Button
+              sx={{ color: "#000000", textTransform: "none", mr: "8rem" }}
+            >
               Contato
             </Button>
           </Toolbar>

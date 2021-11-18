@@ -19,6 +19,39 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 
+import { useForm, ValidationError } from "@formspree/react";
+
+function ContactForm() {
+  const [state, handleSubmit] = useForm("xvodyjob");
+  if (state.succeeded) {
+    return <p>Thanks for joining!</p>;
+  }
+  return (
+    <form
+      action="https://formspree.io/f/xvodyjob"
+      encType="multipart/form-data"
+      method="POST"
+    >
+      <label htmlFor="email">Email Address</label>
+      <input id="email" type="email" name="email" />
+      <ValidationError prefix="Email" field="email" errors={state.errors} />
+      <textarea id="message" name="message" />
+      <ValidationError
+        prefix="Message"
+        field="message"
+        errors={state.errors}
+      />{" "}
+      <label>
+        Your file:
+        <input type="file" name="upload" />
+      </label>
+      <button type="submit" disabled={state.submitting}>
+        Submit
+      </button>
+    </form>
+  );
+}
+
 export const HomePage: React.FC = () => {
   const theme = useTheme();
   return (
@@ -49,14 +82,85 @@ export const HomePage: React.FC = () => {
       <Header />
       <section
         style={{
+          backgroundImage: `url(/home.png)`,
+          backgroundRepeat: "no-repeat",
+          width: "100%",
           height: "100%",
-          backgroundColor: "green",
+          backgroundSize: "cover",
+        }}
+      ></section>
+      <section
+        style={{
+          height: "8%",
+          backgroundColor: "#40AC49",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Typography sx={{ color: "#FFFFFF" }}>Home</Typography>
+        <Typography style={{ color: "white" }}>
+          Temos proteções COVID-19 em nosso escritório, que incluem o uso de
+          máscaras e verificações de temperatura.
+        </Typography>
+      </section>
+      <section
+        style={{
+          height: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingLeft: "5.6rem",
+          backgroundImage: `url(/bg.png)`,
+          backgroundRepeat: "no-repeat",
+          // width: "100%",
+          backgroundSize: "cover",
+        }}
+      >
+        <Box style={{ paddingRight: "2.4rem" }}>
+          <Typography
+            style={{
+              color: "#40AC49",
+              fontWeight: "lighter",
+              fontSize: "3.6rem",
+            }}
+          >
+            AMAZON LIDER
+          </Typography>
+          <Typography>
+            {" "}
+            Morbi tempus felis turpis odio. Purus cras adipiscing eu ultrices
+            lobortis. Proin consectetur risus fermentum facilisis nisl. Amet
+            diam sed rhoncus ultricies. Elit eleifend at adipiscing donec.
+            Faucibus arcu purus nascetur mauris cursus enim sagittis. In ante
+            risus, sed in accumsan. Suspendisse et magna arcu, tortor, a. Quis
+            enim pellentesque consequat egestas commodo egestas elementum.
+            Turpis quis diam sit sed nunc, viverra. Proin quam a semper lacus
+            cras. Auctor pellentesque curabitur faucibus.
+          </Typography>
+        </Box>
+
+        <img src="/home.png" alt="imagem" width="50%" height="50%" />
+
+        <Typography
+          style={{
+            paddingRight: "5.6rem",
+            paddingLeft: "12rem",
+            transform: `rotate(-90deg)`,
+          }}
+        >
+          QUEM SOMOS
+        </Typography>
+      </section>
+      <section
+        style={{
+          height: "15%",
+          backgroundColor: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography style={{ color: "#40AC49" }}>Frase de efeito</Typography>
       </section>
       <section
         style={{
@@ -67,46 +171,83 @@ export const HomePage: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <Card
-          sx={{
-            maxWidth: 340,
-            textAlign: "center",
-            justifyContent: "center",
+        <Box
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            paddingRight: "2rem",
           }}
         >
-          <CardContent>
-            <Typography variant="body2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada
-              egestas viverra condimentum sed. Etiam integer bibendum vitae
-              proin ullamcorper. Cursus amet auctor cursus vel, sagittis
-              imperdiet pulvinar turpis nunc. Purus mauris vitae vulputate quis
-              tempus, vitae enim. Eget condimentum penatibus nisi eget habitant
-              vestib.
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              sx={{
-                width: "100%",
-                backgroundColor: "#40AC49",
-                color: "#FFFFFF",
-              }}
-            >
-              Conheça mais
-            </Button>
-          </CardActions>
-        </Card>
-      </section>
-      <section
-        style={{
-          height: "100%",
-          backgroundColor: "#FFFFFF",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Typography>Imagem do onibus</Typography>
+          <img
+            src="/1.png"
+            alt="imagem"
+            width="100%"
+            style={{ paddingBottom: "2rem" }}
+          />
+          <img
+            src="/2.png"
+            alt="imagem"
+            width="100%"
+            style={{ paddingBottom: "2rem" }}
+          />
+          <img src="/3.png" alt="imagem" width="100%" />
+        </Box>
+        <Box>
+          <Typography style={{ color: "#40AC49", fontSize: "3.6rem" }}>
+            Título
+          </Typography>
+          <Typography style={{ paddingBottom: "2rem" }}>Subtítulo</Typography>
+          <Card
+            sx={{
+              maxWidth: 340,
+              textAlign: "center",
+              justifyContent: "center",
+            }}
+          >
+            <CardContent>
+              <Typography variant="body2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Malesuada egestas viverra condimentum sed. Etiam integer
+                bibendum vitae proin ullamcorper. Cursus amet auctor cursus vel,
+                sagittis imperdiet pulvinar turpis nunc. Purus mauris vitae
+                vulputate quis tempus, vitae enim. Eget condimentum penatibus
+                nisi eget habitant vestib.
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                sx={{
+                  width: "100%",
+                  backgroundColor: "#40AC49",
+                  color: "#FFFFFF",
+                }}
+              >
+                Conheça mais
+              </Button>
+            </CardActions>
+          </Card>
+        </Box>
+        <Box
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            paddingLeft: "2rem",
+          }}
+        >
+          <img
+            src="/4.png"
+            alt="imagem"
+            width="100%"
+            style={{ paddingBottom: "2rem" }}
+          />
+          <img
+            src="/5.png"
+            alt="imagem"
+            width="100%"
+            style={{ paddingBottom: "2rem" }}
+          />
+          <img src="/6.png" alt="imagem" width="100%" />
+        </Box>
       </section>
       <section
         style={{
@@ -131,19 +272,26 @@ export const HomePage: React.FC = () => {
         <Card sx={{ display: "flex" }}>
           <CardMedia
             component="img"
-            sx={{ width: 400, paddingRight: "1.2rem" }}
-            image="/onibus.png"
+            sx={{ paddingRight: "1.2rem" }}
+            image="/img-card.png"
             alt="Live from space album cover"
           />
-          <Box sx={{ display: "flex", flexDirection: "column",  maxWidth: 540 }}>
+          <Box sx={{ display: "flex", flexDirection: "column", maxWidth: 840 }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
-              <Typography sx={{color: "#40AC49", fontSize: "3.2rem", paddingBottom: "2.4rem"}}>
+              <Typography
+                sx={{
+                  color: "#40AC49",
+                  fontSize: "3.2rem",
+                  paddingBottom: "2.4rem",
+                }}
+              >
                 Nossa História
               </Typography>
               <Typography
                 variant="subtitle1"
                 color="text.secondary"
                 component="div"
+                style={{ paddingRight: "1.2rem" }}
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
                 feugiat orci, suscipit tellus felis odio tellus tortor, id. Quis
@@ -216,7 +364,7 @@ export const HomePage: React.FC = () => {
               noValidate
               autoComplete="off"
             >
-              <TextField id="outlined-basic" label="Nome" variant="outlined" />
+              {/* <TextField id="outlined-basic" label="Nome" variant="outlined" />
               <TextField
                 id="outlined-basic"
                 label="E-mail"
@@ -238,6 +386,19 @@ export const HomePage: React.FC = () => {
               >
                 Enviar
               </Button>
+              <form action="https://formspree.io/f/xknkdnoa" method="POST">
+                <label>
+                  Seu email:
+                  <input type="email" name="_replyto" />
+                </label>
+                <label>
+                  Sua mensagem:
+                  <textarea name="message"></textarea>
+                </label>
+
+                <button type="submit">Enviar</button>
+              </form> */}
+              <ContactForm />
             </Box>
           </Grid>
         </Grid>
