@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
+/* eslint-disable react/jsx-no-target-blank */
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import * as React from "react";
 
 import { Header } from "../../Components/Header";
@@ -8,9 +12,12 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
 
 import TextField from "@mui/material/TextField";
+import "@splidejs/splide/dist/css/splide.min.css";
+
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import { useTheme } from "@mui/material/styles";
 import CardMedia from "@mui/material/CardMedia";
@@ -20,6 +27,8 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 
 import { useForm, ValidationError } from "@formspree/react";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../Config/routes";
 
 function ContactForm() {
   const [state, handleSubmit] = useForm("xvodyjob");
@@ -82,17 +91,37 @@ export const HomePage: React.FC = () => {
       <Header />
       <section
         style={{
-          backgroundImage: `url(/home.png)`,
-          backgroundRepeat: "no-repeat",
+          // backgroundImage: `url(/home.png)`,
+          // backgroundRepeat: "no-repeat",
           width: "100%",
           height: "100%",
-          backgroundSize: "cover",
+          // backgroundSize: "cover",
         }}
-      ></section>
+      >
+        <Splide
+          options={{
+            rewind: true,
+            width: "100%",
+            height: "100vh",
+            gap: "1rem",
+            autoplay: true,
+          }}
+        >
+          <SplideSlide>
+            <img src="home.png" alt="Image 1" width="100%" height="100%" />
+          </SplideSlide>
+          <SplideSlide>
+            <img src="slide2.png" alt="Image 2" width="100%" height="100%" />
+          </SplideSlide>
+          <SplideSlide>
+            <img src="slide3.png" alt="Image 1" width="100%" height="100%" />
+          </SplideSlide>
+        </Splide>
+      </section>
       <section
         style={{
           height: "8%",
-          backgroundColor: "#40AC49",
+          backgroundImage: "linear-gradient(to right, #095134, #168D63)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -119,14 +148,15 @@ export const HomePage: React.FC = () => {
         <Box style={{ paddingRight: "2.4rem" }}>
           <Typography
             style={{
-              color: "#40AC49",
+              color: "#168D63",
               fontWeight: "lighter",
               fontSize: "3.6rem",
+              textAlign: "right",
             }}
           >
             AMAZON LIDER
           </Typography>
-          <Typography>
+          <Typography style={{ color: "#747678", textAlign: "right" }}>
             {" "}
             Morbi tempus felis turpis odio. Purus cras adipiscing eu ultrices
             lobortis. Proin consectetur risus fermentum facilisis nisl. Amet
@@ -142,8 +172,8 @@ export const HomePage: React.FC = () => {
         <img
           src="/home.png"
           alt="imagem"
-          width="50%"
-          height="50%"
+          width="70%"
+          height="70%"
           loading="lazy"
         />
 
@@ -166,7 +196,18 @@ export const HomePage: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <Typography style={{ color: "#40AC49" }}>Frase de efeito</Typography>
+        <Typography
+          style={{
+            color: "#168D63",
+            fontSize: "2rem",
+            fontWeight: 200,
+            textAlign: "center",
+            textTransform: "uppercase",
+          }}
+        >
+          Trabalhando com o compromisso de atender e satisfazer cliente com o
+          que há de melhor e mais inovador no mercado
+        </Typography>
       </section>
       <section
         style={{
@@ -175,6 +216,10 @@ export const HomePage: React.FC = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundImage: `url(/bg.png)`,
+          backgroundRepeat: "no-repeat",
+          // width: "100%",
+          backgroundSize: "cover",
         }}
       >
         <Box
@@ -194,22 +239,28 @@ export const HomePage: React.FC = () => {
           <img
             src="/2.png"
             alt="imagem"
-            width="100%"
+            width="420px"
+            height="100%"
             loading="lazy"
             style={{ paddingBottom: "2rem" }}
           />
           <img src="/3.png" alt="imagem" width="100%" loading="lazy" />
         </Box>
         <Box>
-          <Typography style={{ color: "#40AC49", fontSize: "3.6rem" }}>
-            Título
+          <Typography
+            style={{ color: "#168D63", fontSize: "2.4rem", fontWeight: "bold" }}
+          >
+            Experiência incrível
           </Typography>
-          <Typography style={{ paddingBottom: "2rem" }}>Subtítulo</Typography>
+          <Typography style={{ paddingBottom: "1.6rem", color: "#747678" }}>
+            E inesquecível
+          </Typography>
           <Card
             sx={{
               maxWidth: 340,
               textAlign: "center",
               justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <CardContent>
@@ -226,9 +277,11 @@ export const HomePage: React.FC = () => {
               <Button
                 sx={{
                   width: "100%",
-                  backgroundColor: "#40AC49",
+                  backgroundColor: "#168D63",
                   color: "#FFFFFF",
                 }}
+                component={Link}
+                to={ROUTES.FROTA}
               >
                 Conheça mais
               </Button>
@@ -245,7 +298,7 @@ export const HomePage: React.FC = () => {
           <img
             src="/4.png"
             alt="imagem"
-            width="100%"
+            width="420px"
             loading="lazy"
             style={{ paddingBottom: "2rem" }}
           />
@@ -266,9 +319,125 @@ export const HomePage: React.FC = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          paddingRight: "12rem",
+          paddingLeft: "12rem",
+          flexDirection: "column",
+          backgroundImage: `url(/bg_branco.png)`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
-        <Typography>Serviços</Typography>
+        <Grid
+          item
+          container
+          xs={12}
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="flex-end"
+        >
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              City Tours e Viagens
+            </Typography>
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Excursões Regionais
+            </Typography>
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Eventos Corporativos
+            </Typography>
+          </Box>
+          <Box>
+            {" "}
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Feiras, Congressos e Eventos
+            </Typography>
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Locação de ônibus executivo
+            </Typography>
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Receptivo em geral
+            </Typography>
+          </Box>
+          <Box>
+            {" "}
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Transporte de funcionários
+            </Typography>
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Traslados para aeroportos
+            </Typography>
+            <Typography style={{ fontSize: "1.8rem", color: "#747678" }}>
+              Traslados para Festas em geral
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Box style={{ textAlign: "center", justifyContent: "center" }}>
+            <img
+              src="/icone1.png"
+              alt="imagem"
+              width="178.29px"
+              height="120px"
+              loading="lazy"
+            />
+            <Typography
+              style={{
+                fontSize: "1.6rem",
+                color: "#168D63",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+              }}
+            >
+              Custos menores
+            </Typography>
+          </Box>
+
+          <Box style={{ textAlign: "center", justifyContent: "center" }}>
+            <img
+              src="/icone2.png"
+              alt="imagem"
+              width="120px"
+              height="120px"
+              loading="lazy"
+            />
+            <Typography
+              style={{
+                fontSize: "1.6rem",
+                color: "#168D63",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+              }}
+            >
+              Previsibilidade de orçamento
+            </Typography>
+          </Box>
+          <Box style={{ textAlign: "center", justifyContent: "center" }}>
+            <img
+              src="/icone3.png"
+              alt="imagem"
+              width="120px"
+              height="120px"
+              loading="lazy"
+            />
+            <Typography
+              style={{
+                fontSize: "1.6rem",
+                color: "#168D63",
+                fontWeight: "bold",
+                textTransform: "uppercase",
+              }}
+            >
+              capital movimentado
+            </Typography>
+          </Box>
+        </Grid>
       </section>
       <section
         style={{
@@ -277,6 +446,10 @@ export const HomePage: React.FC = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundImage: `url(/bg.png)`,
+          backgroundRepeat: "no-repeat",
+          // width: "100%",
+          backgroundSize: "cover",
         }}
       >
         <Card sx={{ display: "flex" }}>
@@ -286,13 +459,13 @@ export const HomePage: React.FC = () => {
             image="/img-card.png"
             alt="Live from space album cover"
           />
-          <Box sx={{ display: "flex", flexDirection: "column", maxWidth: 840 }}>
+          <Box sx={{ display: "flex", flexDirection: "column", maxWidth: 640 }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
               <Typography
                 sx={{
-                  color: "#40AC49",
+                  color: "#168D63",
                   fontSize: "3.2rem",
-                  paddingBottom: "2.4rem",
+                  paddingBottom: "1.6rem",
                 }}
               >
                 Nossa História
@@ -321,7 +494,7 @@ export const HomePage: React.FC = () => {
       </section>
       <section
         style={{
-          height: "100%",
+          height: "80%",
           backgroundColor: "#FFFFFF",
           display: "flex",
           justifyContent: "center",
@@ -329,7 +502,7 @@ export const HomePage: React.FC = () => {
         }}
       >
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15936.683776188906!2d-59.9756854!3d-3.0488473!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x52bd9f5757460b76!2sAmazon%20L%C3%ADder%20Transporte%20e%20Turismo%20Ltda.!5e0!3m2!1spt-BR!2sbr!4v1635830272925!5m2!1spt-BR!2sbr"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1992.0861817976404!2d-59.978129!3d-3.048464!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xab2fbbd0fc087e32!2sAuto%20onibus%20lider!5e0!3m2!1spt-BR!2sbr!4v1640270546881!5m2!1spt-BR!2sbr"
           width="100%"
           height="100%"
           style={{ border: 0 }}
@@ -351,12 +524,27 @@ export const HomePage: React.FC = () => {
               sx={{
                 textTransform: "uppercase",
                 fontSize: "3.2rem",
-                color: "#40AC49",
+                color: "#168D63",
               }}
             >
               Trabalhe conosco
             </Typography>
-            <Typography sx={{ fontSize: "1.6rem", fontWeight: "lighter" }}>
+            <Divider
+              style={{
+                width: "100%",
+                maxWidth: 560,
+                backgroundColor: "#168D63",
+              }}
+            />
+            <Typography
+              sx={{
+                fontSize: "1.4rem",
+                fontWeight: "lighter",
+                color: "#747678",
+                paddingTop: "2rem",
+                paddingBottom: "2rem",
+              }}
+            >
               Envie seu curriculum para nosso setor de RH para analise.
               <br />
               Assim que tivermos vaga disponível entraremos em contato.
@@ -374,7 +562,7 @@ export const HomePage: React.FC = () => {
               noValidate
               autoComplete="off"
             >
-              {/* <TextField id="outlined-basic" label="Nome" variant="outlined" />
+              <TextField id="outlined-basic" label="Nome" variant="outlined" />
               <TextField
                 id="outlined-basic"
                 label="E-mail"
@@ -390,13 +578,13 @@ export const HomePage: React.FC = () => {
               <Button
                 sx={{
                   width: "100%",
-                  backgroundColor: "#40AC49",
+                  backgroundColor: "#168D63",
                   color: "#FFFFFF",
                 }}
               >
                 Enviar
               </Button>
-              <form action="https://formspree.io/f/xknkdnoa" method="POST">
+              {/* <form action="https://formspree.io/f/xknkdnoa" method="POST">
                 <label>
                   Seu email:
                   <input type="email" name="_replyto" />
@@ -408,7 +596,7 @@ export const HomePage: React.FC = () => {
 
                 <button type="submit">Enviar</button>
               </form> */}
-              <ContactForm />
+              {/* <ContactForm /> */}
             </Box>
           </Grid>
         </Grid>
@@ -416,13 +604,93 @@ export const HomePage: React.FC = () => {
       <section
         style={{
           height: "40%",
-          backgroundColor: "#40AC49",
+          backgroundImage: "linear-gradient(to right, #095134, #168D63)",
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          // justifyContent: "center",
+          // alignItems: "center",
+          flexDirection: "column",
         }}
       >
-        <Typography>Footer</Typography>
+        <Grid
+          item
+          container
+          xs={12}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography> </Typography>
+          <Box
+            style={{
+              flexDirection: "column",
+              textAlign: "right",
+              paddingRight: "4rem",
+              paddingTop: "4rem",
+            }}
+          >
+            <Typography
+              style={{
+                fontSize: "3.2rem",
+                color: "#FFF",
+                fontWeight: "bold",
+                display: "flex",
+                justifyContent: "right",
+              }}
+            >
+              Matriz
+            </Typography>
+            <Divider
+              style={{
+                width: "100%",
+                maxWidth: 560,
+                backgroundColor: "#FFF",
+              }}
+            />
+            <Typography
+              style={{
+                fontSize: "1.6rem",
+                color: "#FFF",
+                fontWeight: "lighter",
+              }}
+            >
+              Ruas Caraubas 16, Manaus - AM, 69098-060
+            </Typography>
+            <Typography
+              style={{ fontSize: "1.6rem", color: "#FFF", fontWeight: 200 }}
+            >
+              (92) 33047736
+            </Typography>
+            <Typography
+              style={{ fontSize: "1.6rem", color: "#FFF", fontWeight: 200 }}
+            >
+              contato@lidertransportes.com.br
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          container
+          xs={12}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "self-end",
+            justifyContent: "center",
+          }}
+        >
+          {/* <Typography style={{ color: "white", paddingRight: "2rem" }}>
+            Cookies
+          </Typography> */}
+          <Typography style={{ color: "white", paddingRight: "2rem" }}>
+            © 2020. Amazon Lider. All Rights Reserved.
+          </Typography>
+          {/* <Typography style={{ color: "white" }}>
+            Política de Privacidade
+          </Typography> */}
+        </Grid>
       </section>
     </div>
   );

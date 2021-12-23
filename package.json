@@ -8,6 +8,8 @@
     "@formspree/react": "^2.2.4",
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "^5.0.6",
+    "@splidejs/react-splide": "^0.6.17",
+    "@splidejs/splide": "^3.6.9",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
